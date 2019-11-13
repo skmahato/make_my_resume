@@ -5,6 +5,7 @@ import { Route } from 'react-router-dom';
 
 import { loadInitial } from '../actions/authentication';
 import SignIn from './SignIn';
+import CircularProgress from './Common/CircularProgress';
 
 function App({ dispatch, initial }) {
   useEffect(() => { dispatch(loadInitial()); }, [dispatch]);
@@ -15,7 +16,7 @@ function App({ dispatch, initial }) {
     return <Route path="/" component={SignIn} />;
   }
 
-  return null;
+  return <CircularProgress />;;
 }
 
 App.propTypes = { initial: PropTypes.object };
