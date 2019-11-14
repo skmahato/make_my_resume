@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { Route } from 'react-router-dom';
 
 import { loadInitial } from '../actions/authentication';
-import SignIn from './SignIn';
+import Authenticate from './Authenticate';
 import CircularProgress from './Common/CircularProgress';
 
 function App({ dispatch, initial }) {
@@ -13,10 +13,10 @@ function App({ dispatch, initial }) {
   if (initial && initial.status === 'authenticated') {
     return <div>Hello</div>;
   } if (initial && (initial.error || initial.status === 'logged_out')) {
-    return <Route path="/" component={SignIn} />;
+    return <Route path="/" component={Authenticate} />;
   }
 
-  return <CircularProgress />;;
+  return <CircularProgress />;
 }
 
 App.propTypes = { initial: PropTypes.object };

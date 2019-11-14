@@ -39,7 +39,7 @@ const styles = theme => ({
     padding: '5px 10px'
   },
 
-  submit: { marginTop: theme.spacing(3) }
+  submit: { margin: theme.spacing(3, 0, 2) }
 });
 
 export default styles;

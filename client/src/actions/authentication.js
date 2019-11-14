@@ -6,7 +6,8 @@ import {
   LOGIN_USER_SUCCESS,
   LOGIN_USER_FAILURE,
   LOGOUT_USER,
-  REMOVE_CURRENT_USER
+  SIGNUP_USER_SUCCESS,
+  SIGNUP_USER_FAILURE
 } from '../constants/actionTypes';
 import { removeToken } from '../helpers/localStorageCache';
 import * as Auth from '../api/authentication';
@@ -24,19 +25,26 @@ export function loadInitial() {
 const loginUserSuccess = createAction(LOGIN_USER_SUCCESS);
 const loginFailure = createAction(LOGIN_USER_FAILURE);
 
-export function requestLogin(loginData) {
-  return dispatch => Auth.signIn(loginData)
+export function requestLogin(body) {
+  return dispatch => Auth.signIn(body)
     .then(data => dispatch(loginUserSuccess(data)))
     .catch(error => dispatch(loginFailure(error)));
 }
 
+const signupUserSuccess = createAction(SIGNUP_USER_SUCCESS);
+const signupUserFailure = createAction(SIGNUP_USER_FAILURE);
+
+export function requestSignup(body) {
+  return dispatch => Auth.signUp(body)
+    .then(data => dispatch(signupUserSuccess(data)))
+    .catch(error => dispatch(signupUserFailure(error)));
+}
+
 const logoutUser = createAction(LOGOUT_USER);
-const removecurrentUser = createAction(REMOVE_CURRENT_USER);
 
 export function logout() {
   return (dispatch) => {
     removeToken('token');
-    dispatch(removecurrentUser());
     return dispatch(logoutUser());
   };
 }

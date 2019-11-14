@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
-import PropTypes from 'prop-types';
 import {
   Avatar,
   Button,
@@ -10,14 +9,16 @@ import {
   InputLabel,
   Paper,
   Typography,
+  Grid,
+  Link,
   withStyles
 } from '@material-ui/core';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 
-import { requestLogin } from '../../actions/authentication';
+import { requestLogin } from '../../../actions/authentication';
 import styles from './styles';
 
-function SignIn({ dispatch, classes }) {
+function SignIn({ dispatch, classes, onSignUpClick }) {
   const [error, setError] = useState(null);
 
   function handleSubmit(e) {
@@ -27,10 +28,10 @@ function SignIn({ dispatch, classes }) {
 
     if (email && password) {
       dispatch(requestLogin({ email, password })).then((response) => {
-        if (response.error) setError(response.payload.response.error);
+        if (response.error) setError('email or password invalid');
         return response;
       });
-    } else setError({ message: 'email or password invalid' });
+    } else setError('email or password invalid');
   }
 
   return (
@@ -42,13 +43,13 @@ function SignIn({ dispatch, classes }) {
         </Avatar>
 
         <Typography component="h1" variant="h5">
-            Sign in
+          Sign in
         </Typography>
 
         <form className={classes.form} onSubmit={handleSubmit}>
           {error && (
             <Typography className={classes.errorMessage}>
-              {error.message}
+              {error}
             </Typography>
           )}
 
@@ -71,14 +72,18 @@ function SignIn({ dispatch, classes }) {
           >
             Sign In
           </Button>
+          <Grid container justify="flex-end">
+            <Grid item>
+              <Link role="button" onClick={() => onSignUpClick(false)} variant="body2">
+                Don&apos;t have an account? Sign up
+              </Link>
+            </Grid>
+          </Grid>
         </form>
       </Paper>
     </main>
   );
 }
 
-SignIn.propTypes = { classes: PropTypes.object.isRequired };
-
 const componentWithStyles = withStyles(styles)(SignIn);
-
 export default connect()(componentWithStyles);
