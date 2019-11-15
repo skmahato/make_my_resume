@@ -1,15 +1,13 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import {
+  Container,
   Avatar,
   Button,
   CssBaseline,
-  FormControl,
-  Input,
-  InputLabel,
-  Paper,
   Typography,
   Grid,
+  TextField,
   Link,
   withStyles
 } from '@material-ui/core';
@@ -35,9 +33,10 @@ function SignIn({ dispatch, classes, onSignUpClick }) {
   }
 
   return (
-    <main className={classes.main}>
+    <Container component="main" maxWidth="xs">
       <CssBaseline />
-      <Paper className={classes.paper}>
+
+      <div className={classes.paper}>
         <Avatar className={classes.avatar}>
           <LockOutlinedIcon />
         </Avatar>
@@ -53,15 +52,35 @@ function SignIn({ dispatch, classes, onSignUpClick }) {
             </Typography>
           )}
 
-          <FormControl margin="normal" required fullWidth>
-            <InputLabel htmlFor="email">Username</InputLabel>
-            <Input id="email" name="email" type="email" autoComplete="email" autoFocus />
-          </FormControl>
+          <Grid container spacing={2}>
+            <Grid item xs={12}>
+              <TextField
+                variant="outlined"
+                required
+                fullWidth
+                id="email"
+                label="Email"
+                name="email"
+                type="email"
+                placeholder="Email"
+                autoComplete="email"
+              />
+            </Grid>
 
-          <FormControl margin="normal" required fullWidth>
-            <InputLabel htmlFor="password">Password</InputLabel>
-            <Input name="password" type="password" id="password" autoComplete="current-password" />
-          </FormControl>
+            <Grid item xs={12}>
+              <TextField
+                variant="outlined"
+                required
+                fullWidth
+                name="password"
+                label="Password"
+                type="password"
+                id="password"
+                placeholder="Password"
+                autoComplete="current-password"
+              />
+            </Grid>
+          </Grid>
 
           <Button
             fullWidth
@@ -72,16 +91,22 @@ function SignIn({ dispatch, classes, onSignUpClick }) {
           >
             Sign In
           </Button>
+
           <Grid container justify="flex-end">
             <Grid item>
-              <Link role="button" onClick={() => onSignUpClick(true)} variant="body2">
+              <Link
+                role="button"
+                onClick={() => onSignUpClick(true)}
+                variant="body2"
+                className={classes.pointer}
+              >
                 Don&apos;t have an account? Sign up
               </Link>
             </Grid>
           </Grid>
         </form>
-      </Paper>
-    </main>
+      </div>
+    </Container>
   );
 }
 

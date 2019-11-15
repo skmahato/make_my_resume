@@ -1,22 +1,9 @@
 const styles = theme => ({
-  main: {
-    width: 'auto',
-    display: 'block',
-    marginLeft: theme.spacing(3),
-    marginRight: theme.spacing(3),
-    [theme.breakpoints.up(400 + theme.spacing(3) * 2)]: {
-      width: 400,
-      marginLeft: 'auto',
-      marginRight: 'auto'
-    }
-  },
-
   paper: {
     marginTop: theme.spacing(8),
     display: 'flex',
     flexDirection: 'column',
-    alignItems: 'center',
-    padding: `${theme.spacing(2)}px ${theme.spacing(3)}px ${theme.spacing(3)}px`
+    alignItems: 'center'
   },
 
   avatar: {
@@ -26,7 +13,7 @@ const styles = theme => ({
 
   form: {
     width: '100%',
-    marginTop: theme.spacing(1)
+    marginTop: theme.spacing(3)
   },
 
   errorMessage: {
@@ -38,6 +25,8 @@ const styles = theme => ({
     marginBottom: '1rem',
     padding: '5px 10px'
   },
+
+  pointer: { cursor: 'pointer' },
 
   submit: { margin: theme.spacing(3, 0, 2) }
 });

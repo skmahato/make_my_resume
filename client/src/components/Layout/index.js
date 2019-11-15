@@ -1,16 +1,29 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { CssBaseline, withStyles } from '@material-ui/core';
 
+import Header from './Header';
+import Footer from './Footer';
 import { logout } from '../../actions/authentication';
+import styles from './styles';
 
-const Layout = ({ dispatch }) => {
-  function handleOnClick() {
-    dispatch(logout());
-  }
+const Layout = ({ dispatch, classes, initial }) => (
+  <div className={classes.root}>
+    <CssBaseline />
+    <Header
+      onClick={() => dispatch(logout())}
+      currentUser={initial}
+    />
 
-  return (
-    <button type="button" onClick={() => handleOnClick()}>Logout</button>
-  );
-};
+    <main className={classes.content}>
+      <div className={classes.drawerHeader} />
+    </main>
 
-export default connect()(Layout);
+    <Footer />
+  </div>
+);
+
+const mapStateToProps = ({ initial }) => ({ initial });
+
+const componentWithStyles = withStyles(styles)(Layout);
+export default connect(mapStateToProps)(componentWithStyles);

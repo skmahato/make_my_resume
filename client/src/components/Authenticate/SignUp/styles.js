@@ -25,6 +25,9 @@ const styles = theme => ({
     marginBottom: '1rem',
     padding: '5px 10px'
   },
+
+  pointer: { cursor: 'pointer' },
+
   submit: { margin: theme.spacing(3, 0, 2) }
 });
 
