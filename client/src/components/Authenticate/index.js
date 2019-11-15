@@ -6,8 +6,8 @@ import SignIn from './SignIn';
 const Authenticate = () => {
   const [signInOpen, setSignInOpen] = useState(false);
 
-  if (signInOpen) return <SignIn onSignUpClick={setSignInOpen} />;
-  return <SignUp onSignInClick={setSignInOpen} />;
+  if (signInOpen) return <SignUp onSignInClick={setSignInOpen} />;
+  return <SignIn onSignUpClick={setSignInOpen} />;
 };
 
 export default Authenticate;

@@ -74,7 +74,7 @@ function SignIn({ dispatch, classes, onSignUpClick }) {
           </Button>
           <Grid container justify="flex-end">
             <Grid item>
-              <Link role="button" onClick={() => onSignUpClick(false)} variant="body2">
+              <Link role="button" onClick={() => onSignUpClick(true)} variant="body2">
                 Don&apos;t have an account? Sign up
               </Link>
             </Grid>

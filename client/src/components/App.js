@@ -5,13 +5,14 @@ import { Route } from 'react-router-dom';
 
 import { loadInitial } from '../actions/authentication';
 import Authenticate from './Authenticate';
+import Layout from './Layout';
 import CircularProgress from './Common/CircularProgress';
 
 function App({ dispatch, initial }) {
   useEffect(() => { dispatch(loadInitial()); }, [dispatch]);
 
   if (initial && initial.status === 'authenticated') {
-    return <div>Hello</div>;
+    return <Layout />;
   } if (initial && (initial.error || initial.status === 'logged_out')) {
     return <Route path="/" component={Authenticate} />;
   }
