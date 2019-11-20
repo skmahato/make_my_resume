@@ -6,6 +6,7 @@ import {
   Button,
   withStyles
 } from '@material-ui/core';
+import { Link } from 'react-router-dom';
 
 import styles from './styles';
 
@@ -16,7 +17,7 @@ function Header({ classes, onClick, currentUser }) {
     >
       <Toolbar className={classes.toolBar}>
         <Typography className={classes.banner} noWrap>
-          My Resume
+          <Link to="/" className={classes.bannerLink}>My Resume</Link>
         </Typography>
 
         <Typography className={classes.email} noWrap>

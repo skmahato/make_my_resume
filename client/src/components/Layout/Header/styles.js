@@ -22,6 +22,12 @@ const styles = () => ({
     color: '#ecf0f3',
     border: '1px solid #ecf0f3',
     fontSize: 10
+  },
+
+  bannerLink: {
+    textDecoration: 'none',
+    color: 'inherit',
+    outline: 0
   }
 });
 
