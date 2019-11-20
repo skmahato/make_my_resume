@@ -1,0 +1,8 @@
+FROM node:10.16.1-alpine
+
+WORKDIR /app
+COPY /client /app
+COPY client/package.json /app
+RUN yarn install
+
+CMD ["yarn", "start"]
