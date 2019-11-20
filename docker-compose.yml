@@ -1,0 +1,41 @@
+version: '3'
+
+services:
+  mysql:
+    image: mysql:5.7
+    restart: always
+    volumes:
+      - db-data:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: mysql
+      MYSQL_DATABASE: make_my_resume_development
+
+  rails:
+    build:
+      context: .
+      dockerfile: ./Dockerfile_rails
+    tty: true
+    stdin_open: true
+    volumes:
+      - .:/app
+    ports:
+      - "4000:4000"
+    depends_on:
+      - mysql
+
+  react:
+    build:
+      context: .
+      dockerfile: ./Dockerfile_react
+    tty: true
+    stdin_open: true
+    volumes:
+      - './client:/app'
+      - '/app/node_modules'
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=development
+
+volumes:
+  db-data:
