@@ -1,30 +1,33 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { withStyles } from '@material-ui/core/styles';
 import Fab from '@material-ui/core/Fab';
 import AddIcon from '@material-ui/icons/Add';
 
 import NoResumeMessage from './NoResumeMessage';
+import Form from './Form';
 import styles from './styles';
 
-function Dashboard({ classes }) {
-  const onAddClick = () => {
-    console.log('click');
-  };
+const Dashboard = ({ classes }) => {
+  const [isOpen, setIsOpen] = useState(false);
 
   return (
     <>
-      <NoResumeMessage handleFormOpen={onAddClick} />
+      <NoResumeMessage handleFormOpen={() => setIsOpen(true)} />
+      <Form
+        isOpen={isOpen}
+        handleFormClose={() => setIsOpen(false)}
+      />
 
       <Fab
         title="New Resume"
         className={classes.fab}
         color="primary"
-        onClick={onAddClick}
+        onClick={() => setIsOpen(true)}
       >
         <AddIcon />
       </Fab>
     </>
   );
-}
+};
 
 export default withStyles(styles)(Dashboard);

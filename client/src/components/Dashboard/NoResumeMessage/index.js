@@ -9,7 +9,6 @@ const NoResumeMessage = ({ classes, handleFormOpen }) => (
     </Typography>
 
     <Typography variant="caption" className={classes.instruction}>
-      Click
       <span role="button" tabIndex="0" className={classes.addResumekAction} onClick={handleFormOpen}>
         Add Resume
       </span>
