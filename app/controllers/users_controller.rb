@@ -1,6 +1,9 @@
 class UsersController < ApplicationController
   def create
-    unless User.find_by_email(user_params[:email])
+    if User.find_by_email(user_params[:email])
+      render json: { errors: ['User already exsts, Login to continue'] },
+             status: :unprocessable_entity
+    else
       @user = User.new(user_params)
 
       if @user.save
@@ -12,9 +15,6 @@ class UsersController < ApplicationController
         render json: { errors: @user.errors.full_messages },
                status: :unprocessable_entity
       end
-    else
-      render json: { errors: ['User already exsts, Login to continue'] },
-             status: :unprocessable_entity
     end
   end
 
