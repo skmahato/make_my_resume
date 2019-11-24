@@ -1,13 +1,19 @@
 const styles = () => ({
+  appBar: {
+    backgroundColor: '#fff',
+    boxShadow: 'none'
+  },
+
   banner: {
-    color: '#ecf0f3',
+    color: '#3f51b5',
     flexGrow: 1,
     fontSize: 18,
-    fontFamily: 'Open Sans'
+    fontFamily: 'Open Sans',
+    fontWeight: 'bold'
   },
 
   email: {
-    color: '#ecf0f3',
+    color: '#3f51b5',
     fontSize: 14,
     fontFamily: 'Open Sans',
     marginRight: 10
@@ -15,12 +21,13 @@ const styles = () => ({
 
   toolBar: {
     minHeight: 60,
+    border: '1 solid #e4e7e9',
     paddingLeft: 10
   },
 
   button: {
-    color: '#ecf0f3',
-    border: '1px solid #ecf0f3',
+    color: '#3f51b5',
+    border: '1px solid #3f51b5',
     fontSize: 10
   },
 

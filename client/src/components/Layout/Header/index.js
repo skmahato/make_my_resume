@@ -14,6 +14,7 @@ function Header({ classes, onClick, currentUser }) {
   return (
     <AppBar
       position="fixed"
+      className={classes.appBar}
     >
       <Toolbar className={classes.toolBar}>
         <Typography className={classes.banner} noWrap>
