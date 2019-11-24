@@ -10,14 +10,20 @@ import {
   withStyles
 } from '@material-ui/core';
 
+import Alert from '../../Common/Alert';
 import styles from './styles';
 
-const Form = ({ isOpen, classes, handleFormClose }) => {
+const Form = ({ isOpen, classes, handleFormClose, handleFormSubmit }) => {
   const [title, setTitle] = useState('');
+  const [error, setError] = useState('');
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(e);
+    return handleFormSubmit({ title })
+      .then((response) => {
+        if (response.error) setError(response.payload.response.errors.join(', '));
+        return response;
+      });
   };
 
   return (
@@ -31,6 +37,8 @@ const Form = ({ isOpen, classes, handleFormClose }) => {
 
       <form className={classes.form} onSubmit={handleSubmit}>
         <DialogContent>
+          {error && <Alert error={error} />}
+
           <TextField
             fullWidth
             required

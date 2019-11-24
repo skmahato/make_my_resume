@@ -3,7 +3,7 @@ import { withStyles } from '@material-ui/core';
 
 import styles from './styles';
 
-const ResumeList = classes => (
+const ResumeList = ({ classes }) => (
   <div className={classes.list}>
     Resume
   </div>

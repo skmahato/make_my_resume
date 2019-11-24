@@ -22,7 +22,7 @@ const styles = () => ({
   toolBar: {
     minHeight: 60,
     border: '1 solid #e4e7e9',
-    paddingLeft: 10
+    padding: '0 45px 0 45px'
   },
 
   button: {

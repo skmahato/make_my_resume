@@ -10,7 +10,8 @@ const styles = () => ({
 
   content: {
     flexGrow: 1,
-    marginBottom: 30
+    marginBottom: 30,
+    padding: '15px 45px 15px 45px'
   }
 });
 
