@@ -4,7 +4,7 @@ class ResumesController < ApplicationController
   end
 
   def create
-    @resume = Resume.new(resume_params)
+    @resume = @current_user.resumes.new(resume_params)
 
     if @resume.save
       render json: @resume, status: :ok
@@ -38,7 +38,7 @@ class ResumesController < ApplicationController
   private
 
   def resume_params
-    params.require(:resume).permit(:title)
+    params.require(:resume).permit(:title, :description)
   end
 
   def resumes

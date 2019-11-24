@@ -15,6 +15,7 @@ import styles from './styles';
 
 const Form = ({ isOpen, classes, handleFormClose, handleFormSubmit }) => {
   const [title, setTitle] = useState('');
+  const [description, setDescription] = useState('');
   const [error, setError] = useState('');
 
   const handleSubmit = (e) => {
@@ -42,10 +43,23 @@ const Form = ({ isOpen, classes, handleFormClose, handleFormSubmit }) => {
           <TextField
             fullWidth
             required
-            label="Resume Title"
+            label="Title"
             name="title"
             value={title}
             onChange={e => setTitle(e.target.value)}
+            margin="normal"
+            variant="outlined"
+            className={classes.textField}
+            InputLabelProps={{ className: classes.label }}
+            InputProps={{ classes: { input: classes.inputTitle } }}
+          />
+
+          <TextField
+            fullWidth
+            label="Description"
+            name="description"
+            value={description}
+            onChange={e => setDescription(e.target.value)}
             margin="normal"
             variant="outlined"
             className={classes.textField}
