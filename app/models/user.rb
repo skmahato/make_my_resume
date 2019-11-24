@@ -1,5 +1,6 @@
 class User < ApplicationRecord
   has_secure_password
+  has_many :resumes, dependent: :destroy
 
   VALID_EMAIL_REGEX = /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i.freeze
 
