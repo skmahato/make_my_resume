@@ -12,7 +12,7 @@ function App({ dispatch, initial }) {
   useEffect(() => { dispatch(loadInitial()); }, [dispatch]);
 
   if (initial && initial.status === 'authenticated') {
-    return <Layout />;
+    return <Route path="/" component={Layout} />;
   } if (initial && (initial.error || initial.status === 'logged_out')) {
     return <Route path="/" component={Authenticate} />;
   }
