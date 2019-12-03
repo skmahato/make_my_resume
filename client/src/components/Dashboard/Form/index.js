@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { isEmpty } from 'lodash';
 import {
   Button,
   Divider,
@@ -13,9 +14,9 @@ import {
 import Alert from '../../Common/Alert';
 import styles from './styles';
 
-const Form = ({ isOpen, classes, handleFormClose, handleFormSubmit }) => {
-  const [title, setTitle] = useState('');
-  const [description, setDescription] = useState('');
+const Form = ({ isOpen, classes, handleFormClose, handleFormSubmit, resume }) => {
+  const [title, setTitle] = useState(resume.title || '');
+  const [description, setDescription] = useState(resume.description || '');
   const [error, setError] = useState('');
 
   const handleSubmit = (e) => {
@@ -74,7 +75,7 @@ const Form = ({ isOpen, classes, handleFormClose, handleFormSubmit }) => {
           </Button>
 
           <Button type="submit" color="primary">
-            Create
+            {isEmpty(resume) ? 'Create' : 'Update'}
           </Button>
         </DialogActions>
       </form>

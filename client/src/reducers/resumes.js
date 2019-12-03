@@ -22,11 +22,11 @@ export default function resumes(state = INITIAL_STATE, action) {
     case ADD_NEW_RESUME_FAILURE:
       return { ...state, error: action.payload.response.errors };
     case UPDATE_RESUME_DETAILS_SUCCESS:
-      return { data: state.data.map(staff => ((staff.id === action.payload.id) ? { ...action.payload } : staff)) };
+      return { data: state.data.map(resume => ((resume.id === action.payload.id) ? { ...action.payload } : resume)) };
     case UPDATE_RESUME_DETAILS_FAILURE:
       return { ...state, error: action.payload.response.errors };
     case DELETE_RESUME_SUCCESS:
-      return { data: state.data.filter(staff => staff.id !== action.payload.id) };
+      return { data: state.data.filter(resume => resume.id !== action.payload.id) };
     case DELETE_RESUME_FAILURE:
       return { ...state, error: action.payload.response.errors };
     default:

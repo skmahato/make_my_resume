@@ -4,10 +4,17 @@ import { Grid, withStyles } from '@material-ui/core';
 import ResumeCard from './ResumeCard';
 import styles from './styles';
 
-const ResumeList = ({ classes, resumes }) => (
+const ResumeList = ({ classes, resumes, handleEdit, handleDelete }) => (
   <div className={classes.root}>
     <Grid container spacing={3}>
-      {resumes.map(resume => <ResumeCard resume={resume} />)}
+      {resumes.map(resume => (
+        <ResumeCard
+          key={resume.id}
+          resume={resume}
+          handleEdit={handleEdit}
+          handleDelete={handleDelete}
+        />
+      ))}
     </Grid>
   </div>
 );

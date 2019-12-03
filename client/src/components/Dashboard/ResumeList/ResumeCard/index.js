@@ -13,12 +13,12 @@ import { Share, GetApp, Edit, Delete } from '@material-ui/icons';
 
 import styles from './styles';
 
-const ResumeCard = ({ resume, classes }) => (
-  <Grid key={resume.id} item xs={12} sm={6} md={4}>
+const ResumeCard = ({ resume, classes, handleEdit, handleDelete }) => (
+  <Grid item xs={12} sm={6} md={4}>
     <Card className={classes.card}>
       <CardHeader
         action={(
-          <IconButton>
+          <IconButton onClick={() => handleEdit(resume.id)}>
             <Edit />
           </IconButton>
         )}
@@ -42,7 +42,7 @@ const ResumeCard = ({ resume, classes }) => (
           <GetApp />
         </IconButton>
 
-        <IconButton className={classes.expand}>
+        <IconButton onClick={() => handleDelete(resume.id)} className={classes.expand}>
           <Delete />
         </IconButton>
       </CardActions>
