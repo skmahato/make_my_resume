@@ -20,7 +20,7 @@ const Form = ({ isOpen, classes, handleFormClose, handleFormSubmit }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    return handleFormSubmit({ title })
+    return handleFormSubmit({ title, description })
       .then((response) => {
         if (response.error) setError(response.payload.response.errors.join(', '));
         return response;

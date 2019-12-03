@@ -2,46 +2,49 @@ import React from 'react';
 import {
   Grid,
   Card,
-  CardActionArea,
+  CardHeader,
   CardActions,
   CardContent,
   IconButton,
   Typography,
   withStyles
 } from '@material-ui/core';
-import ShareIcon from '@material-ui/icons/Share';
-import GetAppIcon from '@material-ui/icons/GetApp';
-import EditIcon from '@material-ui/icons/Edit';
+import { Share, GetApp, Edit, Delete } from '@material-ui/icons';
 
 import styles from './styles';
 
 const ResumeList = ({ classes, resumes }) => {
   const card = resume => (
-    <Grid key={resume.id} item xs={4}>
+    <Grid key={resume.id} item xs={12} sm={6} md={4}>
       <Card className={classes.card}>
-        <CardActionArea>
-          <CardContent>
-            <Typography gutterBottom variant="h5" component="h2">
-              {resume.title}
-            </Typography>
+        <CardHeader
+          action={(
+            <IconButton>
+              <Edit />
+            </IconButton>
+          )}
+          title={resume.title}
+          subheader={`Last Updated On: ${resume.updated_at}`}
+          subheaderTypographyProps={{ className: classes.updatedAt }}
+        />
 
-            <Typography variant="body2" color="textSecondary" component="p">
-              {resume.description}
-            </Typography>
-          </CardContent>
-        </CardActionArea>
+        <CardContent>
+          <Typography variant="body2" color="textSecondary" component="p">
+            {resume.description || 'No Description Available'}
+          </Typography>
+        </CardContent>
 
         <CardActions>
           <IconButton>
-            <ShareIcon />
+            <Share />
           </IconButton>
 
           <IconButton>
-            <GetAppIcon />
+            <GetApp />
           </IconButton>
 
           <IconButton className={classes.expand}>
-            <EditIcon />
+            <Delete />
           </IconButton>
         </CardActions>
       </Card>

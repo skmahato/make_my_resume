@@ -30,17 +30,20 @@ const Dashboard = ({ classes, dispatch, resumes }) => {
 
       {!isEmpty(resumes) && <ResumeList resumes={resumes} />}
 
-      <Form
-        isOpen={isOpen}
-        handleFormClose={() => setIsOpen(false)}
-        handleFormSubmit={handleFormSubmit}
-      />
+      {isOpen && (
+        <Form
+          isOpen={isOpen}
+          handleFormClose={() => setIsOpen(false)}
+          handleFormSubmit={handleFormSubmit}
+        />
+      )}
 
       <Fab
         title="New Resume"
         className={classes.fab}
         color="primary"
         onClick={() => setIsOpen(true)}
+        disabled={isOpen}
       >
         <AddIcon />
       </Fab>

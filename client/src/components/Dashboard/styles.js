@@ -1,6 +1,6 @@
 export default theme => ({
   fab: {
-    position: 'absolute',
+    position: 'fixed',
     bottom: theme.spacing(8),
     right: theme.spacing(5)
   }
