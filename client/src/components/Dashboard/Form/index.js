@@ -14,7 +14,7 @@ import {
 import Alert from '../../Common/Alert';
 import styles from './styles';
 
-const Form = ({ isOpen, classes, handleFormClose, handleFormSubmit, resume }) => {
+const Form = ({ isOpen, classes, handleFormClose, handleFormSubmit, resume = {} }) => {
   const [title, setTitle] = useState(resume.title || '');
   const [description, setDescription] = useState(resume.description || '');
   const [error, setError] = useState('');
